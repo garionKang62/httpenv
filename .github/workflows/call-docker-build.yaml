@@ -27,7 +27,8 @@ jobs:
 
     name: Call Docker Build
 
-    uses: reusable-docker-build.yaml@main
+    uses: garionkang62/httpenv/.github/workflows/reusable-docker-build.yaml@main
+
 
     permissions:
       contents: read
@@ -35,6 +36,7 @@ jobs:
       pull-requests: write # needed to create and update comments in PRs
     
     secrets:
+
       # Only needed if with:dockerhub-enable is true below
       # https://hub.docker.com/settings/security
       dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -46,7 +48,7 @@ jobs:
       ### ENABLE ONE OR BOTH REGISTRIES
       ### tell docker where to push.
       ### NOTE if Docker Hub is set to true, you must set secrets above and also add account/repo/tags below
-      #dockerhub-enable: true
+      dockerhub-enable: true
       ghcr-enable: true
 
       ### A list of the account/repo names for docker build. List should match what's enabled above
